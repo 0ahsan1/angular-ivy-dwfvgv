@@ -1,0 +1,14 @@
+<input type="number" id="fname" [(ngModel)]='search' name="search" placeholder="Enter year">
+<div class="cards">
+  <div class="card" *ngFor="let car of cars.results | searchFilter:search"
+    [ngStyle]="{'background-image': 'url(../../../assets/images/makerLogos/' + car.Make.toLowerCase() + '.png)'}">
+    <div class="background"></div>
+    <div class="cardCell">
+      <b>{{ car.Make }}</b>&nbsp;{{ car.Model }}
+      <br />
+      {{ car.Year }}
+      <br /><br />
+      {{ car.Category }}
+    </div>
+  </div>
+</div>
