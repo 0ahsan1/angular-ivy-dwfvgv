@@ -1,6 +1,12 @@
+<style>
+  .my-pagination .ngx-pagination .current {
+    background: red;
+  }
+</style>
 <input type="number" id="fname" [(ngModel)]='search' name="search" placeholder="Enter year">
 <div class="cards">
-  <div class="card" *ngFor="let car of cars.results | searchFilter:search"
+  <div class="card"
+    *ngFor="let car of cars.results | searchFilter:search | paginate: { itemsPerPage: 10, currentPage: p }"
     [ngStyle]="{'background-image': 'url(../../../assets/images/makerLogos/' + car.Make.toLowerCase() + '.png)'}">
     <div class="background"></div>
     <div class="cardCell">
@@ -11,4 +17,6 @@
       {{ car.Category }}
     </div>
   </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
 </div>

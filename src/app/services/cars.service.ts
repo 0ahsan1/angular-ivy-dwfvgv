@@ -11,9 +11,7 @@ export class CarsService {
   getCarCount(year: any): Observable<any> {
     const filter = encodeURIComponent(
       JSON.stringify({
-        Year: {
-          $exists: true
-        }
+        Year: year
       })
     );
 

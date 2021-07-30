@@ -11,6 +11,7 @@ export class CarsComponent implements OnInit {
   public cars: CarsModel;
   constructor(private carsService: CarsService) {}
   search: number;
+  p: number = 1;
   ngOnInit() {
     this.getDate();
   }

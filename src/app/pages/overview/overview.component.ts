@@ -20,7 +20,7 @@ export class OverviewComponent implements OnInit {
     if (model) {
       models = model;
     }
-    this.carsService.getCarCount(1980).subscribe(
+    this.carsService.getCarCount(models).subscribe(
       data => {
         console.log(data);
         this.carsCount = data.count;

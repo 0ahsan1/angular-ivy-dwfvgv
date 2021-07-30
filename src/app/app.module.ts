@@ -11,8 +11,16 @@ import { AppRoutingModule } from './app-routing';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { SearchPipe } from './pipes/search-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
-  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgxPaginationModule
+  ],
   declarations: [
     SearchPipe,
     AppComponent,
