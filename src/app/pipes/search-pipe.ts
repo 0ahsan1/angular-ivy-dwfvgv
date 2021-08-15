@@ -1,12 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { CarModel } from '../models/car-model';
+import { CarsModel } from '../models/cars-model';
 
 @Pipe({
   name: 'searchFilter',
   pure: false
 })
 export class SearchPipe implements PipeTransform {
-  transform(items: any[], filter: any): any {
-    console.log('Filter', filter);
+  transform(items: CarModel[], filter: number): CarModel[] {
     if (!items || !filter) {
       return items;
     }

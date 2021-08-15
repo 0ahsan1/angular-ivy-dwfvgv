@@ -1,7 +1,16 @@
 <input type="number" id="fname" [(ngModel)]='search' name="search" (keyup)="getData(search)" placeholder="Enter year">
 <div style="width: 100vw; height: 100vh; display: table">
+
   <div style="display: table-cell; vertical-align: middle; text-align: center; font-family: Arial;">
-    <span style="font-size: 10vh;">{{ carsCount }}</span>
-    <br />cars!
+    <ng-container *ngIf="!loading else noData">
+      <span style="font-size: 10vh;">{{ carsCount }}</span>
+      <br />cars!
+    </ng-container>
+    <ng-template #noData>
+      <span style="font-weight:bold;font-size:18px">   loading ...</span>
+    </ng-template>
   </div>
+
+
+
 </div>

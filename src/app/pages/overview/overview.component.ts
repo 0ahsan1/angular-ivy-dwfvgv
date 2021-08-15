@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { timer } from 'rxjs';
 import { CarsModel } from '../../models/cars-model';
 import { CarsService } from '../../services/cars.service';
 
@@ -7,27 +8,28 @@ import { CarsService } from '../../services/cars.service';
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.css']
 })
-export class OverviewComponent implements OnInit {
-  public carsCount: any;
+export class OverviewComponent {
+  public carsCount: number = 0;
+  timer = null;
   constructor(private carsService: CarsService) {}
   search: number;
-  ngOnInit() {
-    this.getData();
-  }
+  loading = false;
 
-  getData(model?) {
-    let models = 1980;
-    if (model) {
-      models = model;
-    }
-    this.carsService.getCarCount(models).subscribe(
-      data => {
-        console.log(data);
-        this.carsCount = data.count;
-      },
-      err => {
-        console.log('err', err);
-      }
-    );
+  getData(model) {
+    this.loading = true;
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.carsService.getCarCount(model).subscribe(
+        data => {
+          this.loading = false;
+          console.log(data);
+          this.carsCount = data.count;
+        },
+        err => {
+          this.loading = false;
+          console.log('err', err);
+        }
+      );
+    }, 400);
   }
 }

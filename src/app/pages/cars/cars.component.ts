@@ -8,7 +8,9 @@ import { CarsService } from '../../services/cars.service';
   styleUrls: ['./cars.component.css']
 })
 export class CarsComponent implements OnInit {
-  public cars: CarsModel;
+  public cars: CarsModel = {
+    results: []
+  };
   constructor(private carsService: CarsService) {}
   search: number;
   p: number = 1;
